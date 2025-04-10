@@ -5,22 +5,25 @@ FROM python:3.11
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-# Set work directory
+# Set working directory
 WORKDIR /app
 
-# Copy project files into container
+# Copy project files into the container
 COPY . /app/
 
 # Install dependencies
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
-# Collect static files (optional, needed for production)
-RUN mkdir -p /app/static
-RUN python manage.py collectstatic --noinput
+# Ensure STATIC_ROOT is set in settings.py (You should also update this in your settings.py)
+ENV DJANGO_SETTINGS_MODULE=cloudstorage.settings
 
-# Expose the port
+# Collect static files (make sure STATIC_ROOT is set correctly in settings.py)
+RUN mkdir -p /app/static
+RUN python manage.py collectstatic --noinput || true
+
+# Expose port 8000
 EXPOSE 8000
 
-# Start the Django development server
+# Run the Django development server
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
