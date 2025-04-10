@@ -27,4 +27,4 @@ jobs:
         with:
           context: ./College Project/mydrive  # Your Dockerfile directory
           push: true
-          tags: MPGI-cloud-storage:latest
+          tags: mpec-cloud-storage:latest
