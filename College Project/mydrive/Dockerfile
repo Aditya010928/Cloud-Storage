@@ -4,7 +4,7 @@ FROM python:3.11
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
-ENV DJANGO_SETTINGS_MODULE=mydrive.settings  # 👈 Tells Django where settings.py is
+ENV DJANGO_SETTINGS_MODULE=mydrive.settings  
 
 # Set work directory
 WORKDIR /app
