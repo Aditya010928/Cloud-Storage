@@ -27,4 +27,4 @@ jobs:
         with:
           context: ./College Project/mydrive  # Your Dockerfile directory
           push: true
-          tags: mpec-cloud-storage:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/cloud-storage:latest
